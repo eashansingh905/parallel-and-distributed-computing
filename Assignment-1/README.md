@@ -63,5 +63,5 @@ We can check to see if the current approach optimizes the performance of the ori
 | 7           |        563ms     |
 | 8           |       535ms      |
 
-As you can see, the execution time of the program nearly halves! With the introduction of more threads, we were able to load the balance of the program and successfully parallelize the Sieves algorithm. 
+As you can see, the execution time of the program nearly halves! With the introduction of more threads, we were able to load the balance of the program and successfully parallelize the Sieves algorithm. Around the addition of the 5th thread, our performance begins to plateu. This follows Amdahl's Law which says that the additional processing unit may not necessarily improve the performance for every marginal unit. 
 
