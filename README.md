@@ -1,4 +1,4 @@
-# COP4520 Concepts of Parallel and Distributed Processing
+#### COP4520 Concepts of Parallel and Distributed Processing
 
 This repository holds my assignments for COP4520. 
 
