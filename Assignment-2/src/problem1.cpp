@@ -4,7 +4,7 @@
 #include <chrono>
 #include <random>
 
-#define GUESTS 100
+#define GUESTS 30
 
 int currentThread; // current guest(thread) in labyrinth
 int cupcakeCounter = 0; // number of cupcakes eaten
