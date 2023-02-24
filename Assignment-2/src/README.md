@@ -113,7 +113,7 @@ Compared to approach 1, one obvious disadvantage this approach poses is the poss
 ## Problem 2: Output
 The output of this program is as such:
 
-**The order in which every guest visits the vase is printed**
+**The order in which every new guest visits the vase is printed**
 
 Once all guests have visited the vase, the program terminates and reports that all guests have visited the vase along with the runtime of the program. 
 
