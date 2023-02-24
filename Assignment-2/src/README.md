@@ -56,7 +56,7 @@ Runtime: ..ms
 | 70              |       392ms      |
 | 100             |       689ms      |
 
-Listed are the runtimes for varying values of N. The listed execution times were taken on average of 10 runs. Because of the varying nature of the RNG, we can expect to see more variation in results sicne some runs may
+Listed are the runtimes for varying values of N. The listed execution times were taken on average of 10 runs. Because of the varying nature of the RNG, we can expect to see more variation in results since some runs may
 be more "lucky" than others by getting the leader thread to quickly update the counter and unblock other threads
 from eating a cupcake. On average, it takes the counter thread N number of random number generations to finally
 re-enter the labyrinth and add a new cupcake. As you can see, as the number of running threads increased, so 
@@ -67,8 +67,48 @@ opportunity for a given thread to be randomly selected to enter. The increase in
 # Problem 2: Minotaur's Crystal Vase
 
 ## Problem 2: Task
+For this task, the Minotaur would like to show N guests his Crystal vase. A given guest can only visit the room with the vase one at a time. Three strategies are presented and we are asked to pick one and discuss the advantages and disadvantages. Here are the three strategies: 
+
+1) Any guest could stop by and check whether the showroom’s door is open at any time 
+and try to enter the room. While this would allow the guests to roam around the castle 
+and enjoy the party, this strategy may also cause large crowds of eager guests to gather 
+around the door. A particular guest wanting to see the vase would also have no 
+guarantee that she or he will be able to do so and when. 
+
+2) The Minotaur’s second strategy allowed the guests to place a sign on the door 
+indicating when the showroom is available. The sign would read “AVAILABLE” or 
+“BUSY.” Every guest is responsible to set the sign to “BUSY” when entering the 
+showroom and back to “AVAILABLE” upon exit. That way guests would not bother trying 
+to go to the showroom if it is not available. 
+
+3) The third strategy would allow the quests to line in a queue. Every guest exiting the 
+room was responsible to notify the guest standing in front of the queue that the 
+showroom is available. Guests were allowed to queue multiple times. 
+
 
 ## Problem 2: Algorithm & Parallelization Approach
+For this assignment I decided to implement approach 2. 
+
+**Approach 2:** 
+The Minotaur’s second strategy allowed the guests to place a sign on the door 
+indicating when the showroom is available. The sign would read “AVAILABLE” or 
+“BUSY.” Every guest is responsible to set the sign to “BUSY” when entering the 
+showroom and back to “AVAILABLE” upon exit. That way guests would not bother trying 
+to go to the showroom if it is not available. 
+
+**Advantages of this approach:**
+Unlike approach 1 where guests will have to hope that the room with the vase is empty, in this approach, 
+it is made very clear whether a guest is able to view the room based off the sign on the door "AVAILABLE"
+or "BUSY". Thus, large crowds of people will not have to wait constantly to see if the room is empty. A quick
+indication will allow them to continue looking around in case it is busy. In approach 3, we have to make an entire
+line or queue of people that will be required to wait before they can walk inside. This will consume them from doing
+other activities at the party and will block. This can to some extent be viewed as inefficient. Approach 2 finds a middle ground where threads will not have to constantly check whether resources are available(approach 1) and being blocked completely from other tasks while they wait(approach 3). The status of the availability of a room can be managed with a simple boolean variable which marks whether someone can enter the room. An O(1) check is sufficient and allows threads to keep moving. 
+
+
+**Disadvantages of this approach:**
+Compared to approach 1, one obvious disadvantage this approach poses is the possibility of unnecessary overhead incase the room is empty. For small values of N, it may not be necessary for the room to be marked as busy or available since there are few guests and their probability of overlapping and competing for resources will be smaller. It is very plausible that every guest can visit the room at a different time and naturally never need to wait. Approach 3 fairs better for larger values of N, where several threads are competing for the same resource and several guests may end up checking the status of the room at the same time with approach 2. While approach 3 does require management of a queue structure, it is organized, and every member of the party will be informed of their place in line. People who do not wish to wait can continue exploring the party while people who are more interested in the vase can join the line, knowing very well their position of seeing the vase and not having to rely on random chance.
+
+
 
 ## Problem 2: Output
 
