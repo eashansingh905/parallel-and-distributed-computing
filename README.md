@@ -2,5 +2,5 @@
 
 This repository holds my assignments for COP4520. 
 
-The Assignment 1 README has instructions on how to run the code and an
-explanation of the algorithm and experimental evaluation. 
+The Assignment 2 README has instructions on how to run the code and an
+explanation of the algorithm and experimental evaluation for both problems.
