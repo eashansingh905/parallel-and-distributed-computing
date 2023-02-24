@@ -111,6 +111,11 @@ Compared to approach 1, one obvious disadvantage this approach poses is the poss
 
 
 ## Problem 2: Output
+The output of this program is as such:
+
+**The order in which every guest visits the vase is printed**
+
+Once all guests have visited the vase, the program terminates and reports that all guests have visited the vase along with the runtime of the program. 
 
 ## Problem 2: Experimental Evaluation
 | Guests(threads) | Execution Time   |
@@ -120,3 +125,5 @@ Compared to approach 1, one obvious disadvantage this approach poses is the poss
 | 50              |       3.87s      |
 | 70              |       5.80s      |
 | 100             |       9.42s      |
+
+Like problem 1, we use uniform random distribution to select a guest to visit the vase. A guest may visit the vase several times if they wish. However unlike problem 1, to better simulate the conditions of problem 2, we allow the guest to stay in the room for a random duration of time. We thus have a second RNG for "duration of stay" that lets the guest stay in the room for some random amount of time. This allows us to make sure that while a guest X is in the room for some amount of milliseconds, another guest Y cannot enter due to the "busy" sign we have on the door. With problem 1, we assume the guest is in the labyrinth purely to eat a cookie and leave. Like problem 1, the runtime increases exponentially since every additional guest may visit one or more time(s) for some non-constant amount of time. Because of the added time a guest stays in the room, we have increased the runtime significantly.
