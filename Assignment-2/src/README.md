@@ -35,6 +35,17 @@ This strategy ensures that every guest is accounted for and that mutex locks are
 
 
 ## Problem 1: Output
+The output of this program is as such:
+
+**Every visit to the labyrinth is printed.**
+
+1) If the leader visits the labyrinth: "Guest #1(leader) has entered the labyrinth"
+2) If a guest X visits the labyrinth: "Guest #X has entered the labyrinth"
+
+3) After all N guests have visited the labyrinth, a message is printed notifying us along with the runtime.
+
+All X guests have had a cupcake!
+Runtime: ..ms
 
 ## Problem 1: Experimental Evaluation
 | Guests(threads) | Execution Time   |
@@ -44,6 +55,14 @@ This strategy ensures that every guest is accounted for and that mutex locks are
 | 50              |       183ms      |
 | 70              |       392ms      |
 | 100             |       689ms      |
+
+Listed are the runtimes for varying values of N. The listed execution times were taken on average of 10 runs. Because of the varying nature of the RNG, we can expect to see more variation in results sicne some runs may
+be more "lucky" than others by getting the leader thread to quickly update the counter and unblock other threads
+from eating a cupcake. On average, it takes the counter thread N number of random number generations to finally
+re-enter the labyrinth and add a new cupcake. As you can see, as the number of running threads increased, so 
+did our runtime. This is expected because as we add more guests that need to visit the labyrinth, there is less
+opportunity for a given thread to be randomly selected to enter. The increase in this runtime will be nonlinear since every marginal running thread will also need to be accounted for by the leader thread. 
+
 
 # Problem 2: Minotaur's Crystal Vase
 
