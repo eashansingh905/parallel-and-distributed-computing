@@ -69,13 +69,13 @@ when the Minotaur requests the information of a given member. At the bottom, a s
 ease of testing, but the number of presents can be changed to 500,000 like the problem statement by changing the NUM_GUESTS variable. 
 
 ## Problem 1: Experimental Evaluation
-<!-- | Workers(threads) | Execution Time   |
+| Workers(threads) | Execution Time   |
 | --------------  | -----------------|
 | 1             |       390ms       |
 | 4              |       419ms      |
 | 8              |       422ms      |
 | 12              |       400ms      |
-| 16            |       450ms      | -->
+| 16            |       450ms      |
 
 
 Here is a sample run of the code at different number of threads on 500 individuals. Experimentation was done to see how the runtime is affected when 
@@ -113,13 +113,13 @@ functions are also made for 4 calculations: the highest 5 temperatures, the lowe
 
 
 ## Problem 2: Experimental Evaluation
-<!-- | Sensors(threads) | Execution Time   |
+| Sensors(threads) | Execution Time   |
 | --------------  | -----------------|
 | 1              |       7ms      |
 | 4             |       159ms      |
 | 8             |       257ms      |
 | 16              |       257ms      |
-| 32             |       644s      | -->
+| 32             |       644s      |
 
 Similar to problem 1, I ran some experiments to see how runtime varies by changing the number of used threads. The table above summarizes these results. Interestingly, the I/O overhead actually adds runtime because the calculations being done per thread
 are actually not very computatonally expensive. 
