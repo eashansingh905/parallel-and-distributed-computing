@@ -58,20 +58,28 @@ presents from his guests.
 
 ## Problem 1: Algorithm & Parallelization Approach
 
+For this problem, I first implemented the base Linked List code, and parallelized it accordingly to the race conditions. The insertion function
+is activated when the case 1 is randomly generated and the present is added to the chain. Deletion takes place when the card is made for the 
+individual. A simple O(n) traversal is made to check if a given present is in the chain or not. 
+
 
 ## Problem 1: Output
-
+The output of problem two can be seen in the CMD. The output shows which guests have been added to chain, and random checks made by selection option 3
+when the Minotaur requests the information of a given member. At the bottom, a summary of the runtime is provided. I tested for 500 individuals for 
+ease of testing, but the number of presents can be changed to 500,000 like the problem statement by changing the NUM_GUESTS variable. 
 
 ## Problem 1: Experimental Evaluation
-<!-- | Guests(threads) | Execution Time   |
+<!-- | Workers(threads) | Execution Time   |
 | --------------  | -----------------|
-| 10              |       19ms       |
-| 30              |       118ms      |
-| 50              |       183ms      |
-| 70              |       392ms      |
-| 100             |       689ms      | -->
+| 1             |       390ms       |
+| 4              |       419ms      |
+| 8              |       422ms      |
+| 12              |       400ms      |
+| 16            |       450ms      | -->
 
 
+Here is a sample run of the code at different number of threads on 500 individuals. Experimentation was done to see how the runtime is affected when 
+there are more workers used to help delete the tasks. 
 
 
 # Problem 2: 
@@ -96,19 +104,22 @@ of your program.
 
 ## Problem 2: Algorithm & Parallelization Approach
 
-
-
-
+For this problem, the input size is divided up amongst NUM_THREADS, or in this case, 8 threads. The data collection phase collects all the values in a contiguous array
+and is parsed appropriately for the number of hours of calculation. For my study, I have selected 12 hours for calcuation with data collections being done every 60 seconds
+as per the problem requirements. Helper functions are made to check for race conditions such that all threads start computation after full collection of data is done. Helper
+functions are also made for 4 calculations: the highest 5 temperatures, the lowest 5 temperatures, the biggest 10 minute delta in temperature over an hour, and an RNG function. 
 
 ## Problem 2: Output
 
 
 ## Problem 2: Experimental Evaluation
-<!-- | Guests(threads) | Execution Time   |
+<!-- | Sensors(threads) | Execution Time   |
 | --------------  | -----------------|
-| 10              |       0.55s      |
-| 30              |       1.58s      |
-| 50              |       3.87s      |
-| 70              |       5.80s      |
-| 100             |       9.42s      | -->
+| 1              |       7ms      |
+| 4             |       159ms      |
+| 8             |       257ms      |
+| 16              |       257ms      |
+| 32             |       644s      | -->
 
+Similar to problem 1, I ran some experiments to see how runtime varies by changing the number of used threads. The table above summarizes these results. Interestingly, the I/O overhead actually adds runtime because the calculations being done per thread
+are actually not very computatonally expensive. 
